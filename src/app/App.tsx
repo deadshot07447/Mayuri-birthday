@@ -486,8 +486,8 @@ export default function App() {
   const activeScreen: Screen = done ? screen : "countdown";
 
   return (
-    <div style={{ minHeight: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", background: "#0d060a" }}>
-      <div style={{ width: "375px", height: "812px", position: "relative", overflow: "hidden", borderRadius: "44px", background: `linear-gradient(165deg, #2a0a11 0%, #1a0810 30%, #0e0616 70%, #0a0510 100%)`, boxShadow: "0 30px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.06)", flexShrink: 0 }}>
+    <div className="app-wrapper">
+      <div className="phone-container">
 
         <div style={{ position: "absolute", inset: 0, zIndex: 1 }}><BokehLayer /></div>
         <div style={{ position: "absolute", inset: 0, zIndex: 2 }}><DiagonalRibbons /></div>
@@ -499,19 +499,6 @@ export default function App() {
             {activeScreen === "gallery" && <GalleryScreen key="gallery" onBack={() => setScreen("birthday")} />}
           </AnimatePresence>
         </div>
-
-        {/* status bar */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "44px", zIndex: 99, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px", pointerEvents: "none" }}>
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "12px", fontWeight: 500, color: "rgba(250,247,242,0.7)" }}>9:41</span>
-          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-            <span style={{ fontSize: "10px", color: "rgba(250,247,242,0.6)" }}>●●●</span>
-            <span style={{ fontSize: "10px", color: "rgba(250,247,242,0.6)" }}>WiFi</span>
-            <span style={{ fontSize: "10px", color: "rgba(250,247,242,0.6)" }}>🔋</span>
-          </div>
-        </div>
-
-        {/* home indicator */}
-        <div style={{ position: "absolute", bottom: "8px", left: "50%", transform: "translateX(-50%)", width: "120px", height: "5px", borderRadius: "3px", background: "rgba(250,247,242,0.25)", zIndex: 99 }} />
 
       </div>
     </div>
