@@ -65,8 +65,7 @@ for (let i = 0; i < maxItems; i++) {
 
 // ── countdown ──────────────────────────────────────────────────────────────
 function getBirthdayTarget(): Date {
-  const now = new Date();
-  return new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+  return new Date(2026, 5, 12, 0, 0, 0); // June 12, 2026 00:00:00
 }
 
 function useCountdown(target: Date) {
