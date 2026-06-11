@@ -477,16 +477,13 @@ export default function App() {
   /* MARKER-MAKE-KIT-INVOKED */
   const [birthdayTarget] = useState(getBirthdayTarget);
   const { h, m, s, done } = useCountdown(birthdayTarget);
-  const [preview, setPreview] = useState(false);
   const [screen, setScreen] = useState<Screen>("countdown");
 
   useEffect(() => {
     if (done && screen === "countdown") setScreen("birthday");
   }, [done]);
 
-  const activeScreen: Screen =
-    preview ? (screen === "countdown" ? "birthday" : screen) :
-      done ? screen : "countdown";
+  const activeScreen: Screen = done ? screen : "countdown";
 
   return (
     <div style={{ minHeight: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", background: "#0d060a" }}>
@@ -516,13 +513,6 @@ export default function App() {
         {/* home indicator */}
         <div style={{ position: "absolute", bottom: "8px", left: "50%", transform: "translateX(-50%)", width: "120px", height: "5px", borderRadius: "3px", background: "rgba(250,247,242,0.25)", zIndex: 99 }} />
 
-        {/* dev preview toggle */}
-        <button
-          onClick={() => { setPreview(v => !v); if (!preview) setScreen("birthday"); }}
-          style={{ position: "absolute", top: "10px", left: "50%", transform: "translateX(-50%)", background: "rgba(212,175,122,0.15)", border: "1px solid rgba(212,175,122,0.3)", borderRadius: "20px", padding: "3px 12px", color: GOLD, fontFamily: "'DM Sans', sans-serif", fontSize: "10px", cursor: "pointer", zIndex: 100, letterSpacing: "0.5px" }}
-        >
-          {preview ? "← Countdown" : "Preview 🎂"}
-        </button>
       </div>
     </div>
   );
